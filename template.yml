@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  F1FantasyBot:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: bin/f1-bot
+      Runtime: go1.x
+      Environment:
+        Variables:
+            REGIONS: us-east-1,us-east-2
+            F1_USER: '{{resolve:ssm:f1_user}}'
+            F1_PASSWORD: '{{resolve:ssm:f1_password}}'
+            F1_LEAGUE: '{{resolve:ssm:f1_league}}'
+            SLACK_OAUTH: '{{resolve:ssm:slack_oauth}}'
+            SLACK_VERIFICATION_TOKEN: '{{resolve:ssm:slack_verification_token}}'
+      Policies: AmazonEC2ReadOnlyAccess
+      Events:
+        SlackPost:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
+        Root:
+          Type: Api
+          Properties:
+            Path: /
+            Method: get
+        Version:
+          Type: Api
+          Properties:
+            Path: /version
+            Method: get
+Outputs:
+    RestUrl:
+        Description: External Rest Api url
+        Value: !Join [ "", [ "https://", !Ref ServerlessRestApi , ".execute-api.", !Ref "AWS::Region" , ".amazonaws.com/", !Ref ServerlessRestApiProdStage ] ]
