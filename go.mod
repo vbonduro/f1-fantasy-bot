@@ -5,7 +5,12 @@ go 1.17
 require (
 	github.com/aws/aws-lambda-go v1.29.0
 	github.com/slack-go/slack v0.10.2
-	github.com/vbonduro/f1-fantasy-api-go v0.1.2-0.20220405120752-dd8def24282e
+	github.com/vbonduro/f1-fantasy-api-go v0.2.0
 )
 
-require github.com/gorilla/websocket v1.4.2 // indirect
+require (
+	github.com/gorilla/websocket v1.4.2 // indirect
+	github.com/tidwall/gjson v1.14.0 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
+)
