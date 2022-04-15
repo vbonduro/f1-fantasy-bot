@@ -1,7 +1,8 @@
 package main
 
 import (
-	"math/rand"
+	"fmt"
+	"log"
 	"net/http"
 	"os"
 
@@ -10,6 +11,15 @@ import (
 	"github.com/vbonduro/f1-fantasy-bot/internal/commands"
 	"github.com/vbonduro/f1-fantasy-bot/internal/slackutil"
 )
+
+var CommandHandler commands.Handler
+
+func init() {
+	err := CommandHandler.Init()
+	if err != nil {
+		panic(err)
+	}
+}
 
 func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
 	command := slackutil.MakeSlashCommand(request.Body)
@@ -22,24 +32,16 @@ func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyRespo
 		}, nil
 	}
 
-	if command.Command != "/f1" {
+	err := CommandHandler.Handle(command)
+	if err != nil {
+		log.Printf("Command " + command.Text + " failed with error " + err.Error())
 		return events.APIGatewayProxyResponse{
-			Body:       "Invalid command.",
+			Body:       fmt.Sprintf("Error: %s", err.Error()),
 			StatusCode: http.StatusOK,
 		}, nil
 	}
 
-	switch command.Text {
-	case "fantasy leaderboard":
-		return commands.FantasyLeaderboard(command), nil
-	}
-
-	steiner := []string{"HE DOES NOT FOK SMASH MY DOOR!",
-		"WE LOOK LIKE A BUNCH OF VANKERS!",
-		"THIS IS WHY EVERYONE HATES YOU!",
-		"WE COULD HAVE LOOKED LIKE ROCKSTARS!"}
 	return events.APIGatewayProxyResponse{
-		Body:       steiner[rand.Intn(len(steiner))],
 		StatusCode: http.StatusOK,
 	}, nil
 }

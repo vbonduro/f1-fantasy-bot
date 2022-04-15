@@ -8,7 +8,7 @@ import (
 	"github.com/vbonduro/f1-fantasy-bot/internal/slackutil"
 )
 
-func TestFantasyLeaderboard(t *testing.T) {
+func TestNextRace(t *testing.T) {
 	handler := commands.Handler{}
 	err := handler.Init()
 	if err != nil {
