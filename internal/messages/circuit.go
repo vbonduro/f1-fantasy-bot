@@ -81,18 +81,17 @@ func makeTimeString(eventTime time.Time) (string, error) {
 		return "NA", nil
 	}
 
-	est, err := time.LoadLocation("EST")
+	est, err := time.LoadLocation("Canada/Eastern")
 	if err != nil {
 		return "", err
 	}
 
-	cet, err := time.LoadLocation("CET")
+	cet, err := time.LoadLocation("Europe/Warsaw")
 	if err != nil {
 		return "", err
 	}
 
-	// todo: For some reason need to add an hour to EST? WHY?
-	timestamp := makeTimestamp(eventTime.In(est).Add(time.Hour), "EST") + "\n" + makeTimestamp(eventTime.In(cet), "CET")
+	timestamp := makeTimestamp(eventTime.In(est), "EST") + "\n" + makeTimestamp(eventTime.In(cet), "CET")
 	return timestamp, nil
 }
 
