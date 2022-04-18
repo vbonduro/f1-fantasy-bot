@@ -2,12 +2,10 @@ package commands
 
 import (
 	"errors"
-	"log"
 	"os"
 	"strconv"
 
 	"github.com/slack-go/slack"
-	"github.com/vbonduro/f1-fantasy-api-go/pkg/f1fantasy"
 	"github.com/vbonduro/f1-fantasy-bot/internal/slackutil"
 )
 
@@ -19,7 +17,7 @@ const (
 )
 
 type Handler struct {
-	F1       *f1fantasy.AuthenticatedApi
+	//F1       *f1fantasy.AuthenticatedApi
 	Slack    *slack.Client
 	Command  slackutil.SlashCommand
 	LeagueId int
@@ -27,28 +25,28 @@ type Handler struct {
 
 func (h *Handler) Init() error {
 	h.Slack = slack.New(os.Getenv(SLACK_OAUTH))
-	f1, err := f1fantasy.NewAuthenticatedApi(os.Getenv(F1_USER), os.Getenv(F1_PASSWORD))
-	if err != nil {
-		return err
-	}
-	h.F1 = f1
+	// todo: Authenticated API currently broken =(
+	// f1, err := f1fantasy.NewAuthenticatedApi(os.Getenv(F1_USER), os.Getenv(F1_PASSWORD))
+	// if err != nil {
+	// 	return err
+	// }
 	h.LeagueId, _ = strconv.Atoi(os.Getenv(F1_LEAGUE))
 	return nil
 }
 
 func (h *Handler) Handle(command slackutil.SlashCommand) error {
 	if command.Command != "/f1" {
-		return errors.New("Invalid Command: " + command.Command + command.Text)
+		return errors.New("Invalid Command: " + command.Command)
 	}
 
-	if h.F1.Expired() {
-		log.Printf("F1 Session Expired! Renew...")
-		f1, err := f1fantasy.NewAuthenticatedApi(os.Getenv(F1_USER), os.Getenv(F1_PASSWORD))
-		if err != nil {
-			return err
-		}
-		h.F1 = f1
-	}
+	// if h.F1.Expired() {
+	// 	log.Printf("F1 Session Expired! Renew...")
+	// 	f1, err := f1fantasy.NewAuthenticatedApi(os.Getenv(F1_USER), os.Getenv(F1_PASSWORD))
+	// 	if err != nil {
+	// 		return err
+	// 	}
+	// 	h.F1 = f1
+	// }
 	h.Command = command
 
 	switch command.Text {
@@ -58,5 +56,5 @@ func (h *Handler) Handle(command slackutil.SlashCommand) error {
 		return h.nextRace()
 	}
 
-	return errors.New("Invalid Command: " + command.Command + command.Text)
+	return errors.New("Invalid Command: " + command.Text)
 }

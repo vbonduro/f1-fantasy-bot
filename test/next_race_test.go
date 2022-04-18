@@ -15,6 +15,8 @@ func TestNextRace(t *testing.T) {
 		panic(err)
 	}
 	command := slackutil.SlashCommand{}
+	command.Command = "/f1"
+	command.Text = "next race"
 	command.ChannelID = os.Getenv("CHANNEL_ID")
 	err = handler.Handle(command)
 	if err != nil {
