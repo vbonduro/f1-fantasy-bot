@@ -5,7 +5,7 @@ go 1.17
 require (
 	github.com/aws/aws-lambda-go v1.29.0
 	github.com/slack-go/slack v0.10.2
-	github.com/vbonduro/f1-ergast-api-go v0.1.0
+	github.com/vbonduro/f1-ergast-api-go v0.2.0
 	github.com/vbonduro/f1-fantasy-api-go v0.2.1
 )
 

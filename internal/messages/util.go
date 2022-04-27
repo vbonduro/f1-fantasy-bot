@@ -14,3 +14,27 @@ func MakeFlagEmoji(countryIso string) string {
 	}
 	return flag
 }
+
+func NationalityToCountryIso(nationality string) string {
+	var ISO_MAP = map[string]string{
+		"Monegasque": "MC",
+		"Italian":    "IT",
+		"Dutch":      "NL",
+		"Austrian":   "AT",
+		"Mexican":    "MX",
+		"British":    "GB",
+		"German":     "DE",
+		"Spanish":    "ES",
+		"Finnish":    "FI",
+		"Swiss":      "CH",
+		"French":     "FR",
+		"Danish":     "DK",
+		"American":   "US",
+		"Australian": "AU",
+		"Japanese":   "JP",
+		"Chinese":    "CN",
+		"Thai":       "TH",
+		"Canadian":   "CA",
+	}
+	return ISO_MAP[nationality]
+}
