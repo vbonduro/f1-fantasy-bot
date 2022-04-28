@@ -25,8 +25,8 @@ github.com/tidwall/match v1.1.1/go.mod h1:eRSPERbgtNPcGhD8UCthc6PmLEQXEWd3PRB5JT
 github.com/tidwall/pretty v1.2.0 h1:RWIZEg2iJ8/g6fDDYzMpobmaoGh5OLl4AXtGUGPcqCs=
 github.com/tidwall/pretty v1.2.0/go.mod h1:ITEVvHYasfjBbM0u2Pg8T2nJnzm8xPwvNhhsoaGGjNU=
 github.com/urfave/cli/v2 v2.4.0/go.mod h1:NX9W0zmTvedE5oDoOMs2RTC8RvdK98NTYZE5LbaEYPg=
-github.com/vbonduro/f1-ergast-api-go v0.2.0 h1:PQd9S2lFjTjD1FOY/9tFURdxdspmUVj1RPruEujeo6I=
-github.com/vbonduro/f1-ergast-api-go v0.2.0/go.mod h1:pGNzCKu4wQGCAHZGE0NZnHSvDZwr127ke3/3jUmuTP0=
+github.com/vbonduro/f1-ergast-api-go v0.3.0 h1:q09lpWUrOVR7A3usI2PaYsdDf6+AA4Grh6BGCUuvf5w=
+github.com/vbonduro/f1-ergast-api-go v0.3.0/go.mod h1:pGNzCKu4wQGCAHZGE0NZnHSvDZwr127ke3/3jUmuTP0=
 github.com/vbonduro/f1-fantasy-api-go v0.2.1 h1:o/017pDPaTuLBCcRpCbCMDA2wMuw3FnkC5Pxk1uz9Hc=
 github.com/vbonduro/f1-fantasy-api-go v0.2.1/go.mod h1:EjhqTFy2ABnUdkmwxYLFntUgb2wb/VOr+JpSpWtqlm8=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
