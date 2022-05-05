@@ -49,6 +49,10 @@ func (h *Handler) Handle(command slackutil.SlashCommand) error {
 	// }
 	h.Command = command
 
+	if len(command.Text) == 0 {
+		return h.help()
+	}
+
 	switch command.Text {
 	case "fantasy leaderboard":
 		return h.fantasyLeaderboard()

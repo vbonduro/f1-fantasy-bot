@@ -17,10 +17,15 @@ Resources:
             SLACK_VERIFICATION_TOKEN: '{{resolve:ssm:slack_verification_token}}'
       Policies: AmazonEC2ReadOnlyAccess
       Events:
-        SlackPost:
+        SlackCommand:
           Type: Api
           Properties:
-            Path: /
+            Path: /slash
+            Method: post
+        SlackModal:
+          Type: Api
+          Properties:
+            Path: /modal
             Method: post
         Root:
           Type: Api

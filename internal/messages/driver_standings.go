@@ -9,7 +9,7 @@ import (
 )
 
 func MakeDriverStandings(standings []ergast.DriverStanding, leader *f1fantasy.Player) (*slack.MsgOption, error) {
-	headerText := slack.NewTextBlockObject(MARKDOWN, "*Driver Standings* :racing_car:\n", false, false)
+	headerText := slack.NewTextBlockObject(MARKDOWN, "*Driver Standings* :checkered_flag:\n", false, false)
 	headerSection := slack.NewSectionBlock(headerText, nil, nil)
 
 	podiumDrivers := ":first_place_medal: " + makeDriverName(standings[0]) + "\n"
