@@ -38,3 +38,10 @@ func NationalityToCountryIso(nationality string) string {
 	}
 	return ISO_MAP[nationality]
 }
+
+func Min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}

@@ -62,6 +62,8 @@ func (h *Handler) Handle(command slackutil.SlashCommand) error {
 		return h.driverStandings()
 	case "constructor standings":
 		return h.constructorStandings()
+	case "driver stats":
+		return h.driverStats(0)
 	}
 
 	return errors.New("Invalid Command: " + command.Text)

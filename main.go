@@ -63,6 +63,7 @@ func handleBlockAction(action *slack.BlockAction, user slack.User, channel slack
 			panic(err)
 		}
 	}
+	log.Printf("Block action: " + action.ActionID)
 }
 
 func modalEventHandler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
